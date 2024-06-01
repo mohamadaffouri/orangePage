@@ -1,0 +1,137 @@
+<html lang="en" class="js-focus-visible" data-js-focus-visible=""><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>    Register
+</title>
+    <link rel="preload" href="https://datascience.orangecodingacademy.com/assets/boosted/dist/fonts/HelvNeue55_W1G.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="https://datascience.orangecodingacademy.com/assets/boosted/dist/fonts/HelvNeue75_W1G.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link href="https://datascience.orangecodingacademy.com/assets/boosted/dist/css/orangeHelvetica.min.css" rel="stylesheet">
+    <link href="https://datascience.orangecodingacademy.com/assets/boosted/dist/css/orangeIcons.min.css" rel="stylesheet">
+    <link href="https://datascience.orangecodingacademy.com/assets/boosted/dist/css/boosted.min.css" rel="stylesheet">
+    <link href="https://datascience.orangecodingacademy.com/assets/css/client.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/boosted@5.3.3/dist/js/boosted.bundle.min.js" integrity="sha384-3RoJImQ+Yz4jAyP6xW29kJhqJOE3rdjuu9wkNycjCuDnGAtC/crm79mLcwj1w2o/" crossorigin="anonymous"></script>
+    <style>
+            @media (max-width: 1000px) {
+        .hide{
+            display: none;
+        }
+        
+    }
+    </style>
+</head>
+<body>
+    <div class="d-md-flex  h-100 ">
+        <div class="col-lg-4 p-0 hide ">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class=""></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1" class="active"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item">
+                        <img class="d-block h-100 my-div" src="2.jpg" alt="First slide">
+                    </div>
+                    <div class="carousel-item active">
+                        <img id="" class="d-block h-100 my-div" src="2.jpg" alt="Second slide">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 px-0">
+            <header role="banner">
+                <nav role="navigation" id="mainNav" class="navbar navbar-light bg-white navbar-expand-md pt-2 border-bottom pb-0 mb-2 pt-1" aria-label="Main navigation">
+                <div class="container-fluid">
+                    <a href="/">
+                        <img id="imgw" src="white.png" class="d-inline-block align-bottom mr-3" alt="Back to homepage" title="Back to homepage" height="70" loading="lazy">
+                    </a>
+                    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#orange-navbar-collapse" aria-controls="orange-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse justify-content-end collapse" id="orange-navbar-collapse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="/help" target="_blank">Help </a></li>
+                        <li class="nav-item"><a class="nav-link" href="/terms" target="_blank"> Terms &amp; Conditions</a></li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        
+                                        </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+     <section class=" mt-4">
+        <div >
+            <form method="post"  action="">
+                <input type="hidden" name="_token" value="">    
+                 <div class="d-flex align-items-center flex-column">
+                    <div class="col-lg-6 col-md-7">
+                        <h1>Create an account</h1>
+                    </div>
+                    <div class="mb-4  col-lg-6 col-md-7 ">
+                        <label for="email" class="is-required">Email address<span class="sr-only"> (required)</span></label>
+                        <div >
+                            <input name="email" type="text" class="form-control email  " id="email" value="">
+                                                    </div>
+                        <small>eg: username@domain.com </small>
+                    </div>
+                    <div class="mb-4 form-group col-lg-6 col-md-7 ">
+                        <label for="mobile" class="is-required">Mobile<span class="sr-only"> (required)</span></label>
+                        <div class="input-group ">
+                            <input name="mobile" type="text" class="form-control mobile  " id="mobile" value="">
+                                                    </div>
+                        <small>eg: 077********</small>
+                    </div>
+                    <div class="mb-1 form-group col-lg-6 col-md-7" style="position: relative;">
+                        <label for="validationServer02" class="is-required">Create Password<span class="sr-only"> (required)</span></label>
+                        <div class="input-group ">
+                            <input name="password" type="password" class="form-control password col-11 pr-0  " id="password" value="">
+                            <div class="d-flex align-items-center " onclick="showPass()">
+                                <i class="fa fa-eye-slash eye btn btn-light border-left-0" aria-hidden="true"></i>
+                            </div>
+                                                    </div>
+                        <small>The Password should be between 6-18 characters. </small>
+                      
+                    </div>
+                    <div class="form-group col-lg-6 col-md-7 mt-4">
+                        <div class="custom-control custom-checkbox">
+                            <input class="custom-control-input " id="chAgree" name="chAgree" type="checkbox">
+                            <label class="custom-control-label " for="chAgree">I agree to the <a href="/terms" target="_blank">terms &amp;
+                                    conditions</a> Orange. <span class="mandatory-txt">*</span></label>
+                                                    </div>
+                    </div>
+                    <div class="mb-4 form-group col-lg-6 col-md-7 ">
+                        <div class="form-group custom-control custom-checkbox col-sm-12 ">
+                            <input name="is_newsletter" type="checkbox" class="custom-control-input" id="is_newsletter" checked="">
+                            <label class="custom-control-label" for="is_newsletter">Receive Coding Academy
+                                Newsletter. </label>
+                        </div>
+                    </div>
+                    <div class="mb-4 form-group col-lg-6 col-md-7">
+                        <button class="next1 btn btn-primary  btn-lg btn-block" type="submit">Sign Up</button>
+                </div>
+
+
+
+
+
+
+                    <div class="mb-4 form-group col-lg-6 col-md-7">
+                        <a href="" style="text-decoration: none"> <input type="button" class="btn btn-secondary  btn-lg btn-block" value="Already have an account?login">
+                    </a></div><a href="" style="text-decoration: none">
+                </a></div><a href="" style="text-decoration: none">
+            
+        </a></form></div><a href="" style="text-decoration: none">
+    </a></section><a href="" style="text-decoration: none"> 
+              
+</a></div><a href="" style="text-decoration: none">
+</a></div><a href="" style="text-decoration: none">
+
+   
+
+
+   
+
+
+</a></body></html>
