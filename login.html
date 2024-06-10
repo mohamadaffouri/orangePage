@@ -71,7 +71,7 @@
                 <input type="hidden" name="_token" value="">    
                  <div class="d-flex align-items-center flex-column">
                     <div class="col-lg-6 col-md-7">
-                        <h1>Create an account</h1>
+                        <h1>Login Page</h1>
                     </div>
                     <div class="mb-4  col-lg-6 col-md-7 ">
                         <label for="email" class="is-required">Email address<span class="sr-only"> (required)</span></label>
@@ -81,47 +81,26 @@
                         <small>eg: username@domain.com </small>'
                         <div id="errorEmail" class="error"></div>
                     </div>
-                    <div class="mb-4 form-group col-lg-6 col-md-7 ">
-                        <label for="mobile" class="is-required">Mobile<span class="sr-only"> (required)</span></label>
-                        <div class="input-group ">
-                            <input name="mobile" type="text" class="form-control mobile  " id="mobile" value="">
-                        </div>
-                        <small>eg: 077********</small>
-                        
-                        <div id="errorNum" class="error"></div>
-                    </div>
+                   
                     <div class="mb-1 form-group col-lg-6 col-md-7" style="position: relative;">
-                        <label for="validationServer02" class="is-required">Create Password<span class="sr-only"> (required)</span></label>
+                        <label for="validationServer02" class="is-required"> Password<span class="sr-only"> (required)</span></label>
                         <div class="input-group ">
                             <input name="password" type="password" class="form-control password col-11 pr-0  " id="password" value="">
                             <div class="d-flex align-items-center " onclick="showPass()">
                                 <i class="fa fa-eye-slash eye btn btn-light border-left-0" aria-hidden="true"></i>
                             </div>
                         </div>
-                        <small>The Password should be between 6-18 characters. </small>
+                        
                       <div id="error" class="error"></div>
                     </div>
-                    <div class="form-group col-lg-6 col-md-7 mt-4">
-                        <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input " id="chAgree" name="chAgree" type="checkbox">
-                            <label class="custom-control-label " for="chAgree">I agree to the <a href="/terms" target="_blank">terms &amp;
-                                    conditions</a> Orange. <span class="mandatory-txt">*</span></label>
-                                                    </div>
-                    </div>
-                    <div class="mb-4 form-group col-lg-6 col-md-7 ">
-                        <div class="form-group custom-control custom-checkbox col-sm-12 ">
-                            <input name="is_newsletter" type="checkbox" class="custom-control-input" id="is_newsletter" checked="">
-                            <label class="custom-control-label" for="is_newsletter">Receive Coding Academy
-                                Newsletter. </label>
-                        </div>
-                    </div>
+                    
+                    
                     <div class="mb-4 form-group col-lg-6 col-md-7">
-                        <button class=" btn btn-primary  btn-lg btn-block" type="submit">Sign Up</button>
+                        <button class=" btn btn-primary  btn-lg btn-block" type="submit">Login</button>
                 </div>
 
                     <div class="mb-4 form-group col-lg-6 col-md-7">
-                        <a href="login.html" style="text-decoration: none"> <input type="button" class="btn btn-secondary  btn-lg btn-block" value="Already have an account?login">
-                    </a></div><a href="" style="text-decoration: none">
+                        </div><a href="" style="text-decoration: none">
                 </a></div><a href="" style="text-decoration: none">
             
         </a></form></div><a href="" style="text-decoration: none">
@@ -140,12 +119,14 @@
 <script>
 function validateEmail(e){
         event.preventDefault();
+        localStorage.removeItem('loginEmail');
         var email =document.getElementById("email").value;
     var errorDiv=document.getElementById("errorEmail");
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if(regex.test(email)){
-        localStorage.setItem("savedEmail", email);
-        errorDiv.textContent = "Email address is valid";
+        
+        localStorage.setItem("loginEmail", email);
+        errorDiv.textContent = "Email address is valid" +name;
                 errorDiv.style.color = "green";
     } else {
         errorDiv.textContent = "Please enter a valid email address.";
@@ -154,33 +135,20 @@ function validateEmail(e){
   
     }
 
-function validateMobileNum(e){
-        event.preventDefault();
-        var mobileNum =document.getElementById("mobile").value;
-    var errorDiv=document.getElementById("errorNum");
-    const regex = /^077\d{7}$/;
-    if(regex.test(mobileNum)){
-        localStorage.setItem("savedMobile", mobileNum);
-        errorDiv.textContent = "Mobile number is valid";
-                errorDiv.style.color = "green";
-    } else {
-        errorDiv.textContent = "Mobile number must start with 077 and be 10 digits long.";
-                errorDiv.style.color = "red";
-    }
-  
-    }
+
 
 
 
 
     function validatePassword (e){
+       
         event.preventDefault();
+        localStorage.removeItem('loginPassword');
         var password =document.getElementById("password").value;
     var errorDiv=document.getElementById("error");
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    
     if(regex.test(password)){
-        localStorage.setItem("password", password);
+        localStorage.setItem("loginPassword", password);
         errorDiv.textContent = "Password is valid";
                 errorDiv.style.color = "green";
     } else {
@@ -191,9 +159,15 @@ function validateMobileNum(e){
     }
     function validateForm(e){
         validatePassword(e);
-        validateMobileNum(e);
         validateEmail(e);
-        
+        const savedEmail = localStorage.getItem('savedEmail');
+        const loginEmail = localStorage.getItem('loginEmail');
+        const password = localStorage.getItem('password');
+        const loginPassword = localStorage.getItem('loginPassword');
+        if (savedEmail == loginEmail && password== loginPassword){
+            window.location.href = 'successLogin.html';
+        } else alert("User Not found");
+       
     }
     
 </script>
