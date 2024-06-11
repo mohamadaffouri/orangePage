@@ -81,6 +81,14 @@
                         <small>eg: username@domain.com </small>'
                         <div id="errorEmail" class="error"></div>
                     </div>
+                    <div class="mb-4  col-lg-6 col-md-7 ">
+                        <label for="email" class="is-required">User Name<span class="sr-only"> (required)</span></label>
+                        <div >
+                            <input name="text" type="text" class="form-control email  " id="userName" value="">
+                        </div>
+                        
+                        <div id="errorUser" class="error"></div>
+                    </div>
                     <div class="mb-4 form-group col-lg-6 col-md-7 ">
                         <label for="mobile" class="is-required">Mobile<span class="sr-only"> (required)</span></label>
                         <div class="input-group ">
@@ -100,6 +108,17 @@
                         </div>
                         <small>The Password should be between 6-18 characters. </small>
                       <div id="error" class="error"></div>
+                    </div>
+                    <div class="mb-1 form-group col-lg-6 col-md-7" style="position: relative;">
+                        <label for="validationServer02" class="is-required">Confirm Password<span class="sr-only"> (required)</span></label>
+                        <div class="input-group ">
+                            <input name="password" type="password" class="form-control password col-11 pr-0  " id="password1" value="">
+                            <div class="d-flex align-items-center " onclick="showPass()">
+                                <i class="fa fa-eye-slash eye btn btn-light border-left-0" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                      
+                      <div id="errorConfirme" class="error"></div>
                     </div>
                     <div class="form-group col-lg-6 col-md-7 mt-4">
                         <div class="custom-control custom-checkbox">
@@ -138,62 +157,103 @@
 
 </a>
 <script>
+    var email;
+    var emailV;
 function validateEmail(e){
         event.preventDefault();
-        var email =document.getElementById("email").value;
+         email =document.getElementById("email").value;
     var errorDiv=document.getElementById("errorEmail");
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if(regex.test(email)){
-        localStorage.setItem("savedEmail", email);
+      
         errorDiv.textContent = "Email address is valid";
                 errorDiv.style.color = "green";
+                emailV=true;
     } else {
         errorDiv.textContent = "Please enter a valid email address.";
                 errorDiv.style.color = "red";
+                emailV=false;
     }
   
     }
-
+    var mobileNum;
+    var mobileNumV;
 function validateMobileNum(e){
         event.preventDefault();
-        var mobileNum =document.getElementById("mobile").value;
+         mobileNum =document.getElementById("mobile").value;
     var errorDiv=document.getElementById("errorNum");
     const regex = /^077\d{7}$/;
     if(regex.test(mobileNum)){
-        localStorage.setItem("savedMobile", mobileNum);
+        mobileNumV=true;
         errorDiv.textContent = "Mobile number is valid";
                 errorDiv.style.color = "green";
     } else {
         errorDiv.textContent = "Mobile number must start with 077 and be 10 digits long.";
                 errorDiv.style.color = "red";
+                mobileNumV=false;
     }
   
     }
 
 
-
-
+    var password;
+    var passwordV;
     function validatePassword (e){
         event.preventDefault();
-        var password =document.getElementById("password").value;
+         password =document.getElementById("password").value;
     var errorDiv=document.getElementById("error");
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     
     if(regex.test(password)){
-        localStorage.setItem("password", password);
+        
         errorDiv.textContent = "Password is valid";
                 errorDiv.style.color = "green";
+                passwordV=true;
     } else {
         errorDiv.textContent = "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one digit, and one special character.";
                 errorDiv.style.color = "red";
+                passwordV=false;
     }
   
+    }
+var confirmPV;
+    function confirmPassword (e){
+        event.preventDefault();
+        var password0 =document.getElementById("password").value;
+        var password1 =document.getElementById("password1").value;
+    var errorDiv=document.getElementById("errorConfirme");
+    if (password0 != password1){
+        errorDiv.textContent="Password Not Match";
+        confirmPV=false;
+    } else { errorDiv.textContent="";
+    confirmPV=true;
+    } 
+    
+    }
+    var userName;
+    var userV;
+    function validateUser (){
+        //localStorage.removeItem('userName');
+         userName = document.getElementById("userName").value;
+        
+        if (userName !== null && userName !== "") {
+            userV=true
+    } else userV =false;
     }
     function validateForm(e){
         validatePassword(e);
         validateMobileNum(e);
         validateEmail(e);
-        
+        confirmPassword(e);
+        validateUser(e);
+        if (userV && confirmPV && passwordV  && mobileNumV && emailV){
+             localStorage.setItem("password", password);
+        localStorage.setItem("savedMobile", mobileNum);
+        localStorage.setItem("savedEmail", email);
+     
+        localStorage.setItem("userName", userName);}
+       
+       
     }
     
 </script>

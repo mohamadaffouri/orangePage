@@ -124,7 +124,7 @@ function validateEmail(e){
     var errorDiv=document.getElementById("errorEmail");
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if(regex.test(email)){
-        
+        sessionStorage.setItem("loginEmail", email);
         localStorage.setItem("loginEmail", email);
         errorDiv.textContent = "Email address is valid" +name;
                 errorDiv.style.color = "green";
@@ -143,11 +143,13 @@ function validateEmail(e){
     function validatePassword (e){
        
         event.preventDefault();
+        
         localStorage.removeItem('loginPassword');
         var password =document.getElementById("password").value;
     var errorDiv=document.getElementById("error");
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     if(regex.test(password)){
+        sessionStorage.setItem("loginPassword", password);
         localStorage.setItem("loginPassword", password);
         errorDiv.textContent = "Password is valid";
                 errorDiv.style.color = "green";
@@ -160,10 +162,11 @@ function validateEmail(e){
     function validateForm(e){
         validatePassword(e);
         validateEmail(e);
+        const loginEmail = sessionStorage.getItem("loginEmail");
         const savedEmail = localStorage.getItem('savedEmail');
-        const loginEmail = localStorage.getItem('loginEmail');
+        const loginPassword = sessionStorage.getItem("loginPassword");
         const password = localStorage.getItem('password');
-        const loginPassword = localStorage.getItem('loginPassword');
+        
         if (savedEmail == loginEmail && password== loginPassword){
             window.location.href = 'successLogin.html';
         } else alert("User Not found");
