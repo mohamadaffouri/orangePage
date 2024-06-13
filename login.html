@@ -119,13 +119,13 @@
 <script>
 function validateEmail(e){
         event.preventDefault();
-        localStorage.removeItem('loginEmail');
+        sessionStorage.removeItem('loginEmail');
         var email =document.getElementById("email").value;
     var errorDiv=document.getElementById("errorEmail");
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if(regex.test(email)){
         sessionStorage.setItem("loginEmail", email);
-        localStorage.setItem("loginEmail", email);
+       
         errorDiv.textContent = "Email address is valid" +name;
                 errorDiv.style.color = "green";
     } else {
@@ -144,20 +144,20 @@ function validateEmail(e){
        
         event.preventDefault();
         
-        localStorage.removeItem('loginPassword');
+        sessionStorage.removeItem('loginPassword');
         var password =document.getElementById("password").value;
     var errorDiv=document.getElementById("error");
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     if(regex.test(password)){
         sessionStorage.setItem("loginPassword", password);
-        localStorage.setItem("loginPassword", password);
+
         errorDiv.textContent = "Password is valid";
                 errorDiv.style.color = "green";
     } else {
         errorDiv.textContent = "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one digit, and one special character.";
                 errorDiv.style.color = "red";
     }
-  
+
     }
     function validateForm(e){
         validatePassword(e);

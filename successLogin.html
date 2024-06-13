@@ -4,13 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        h1{
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <p id="name"></p>
+    <h1>Your session started</h1>
+    <button id="logout" onclick="logOut()"> Logout</button>
     <script>
-        
+           const email = sessionStorage.getItem("loginEmail");
+      
+        const password= sessionStorage.getItem("loginPassword");
         const loginEmail = localStorage.getItem('userName');
+        var display= document.querySelector('h1');
         var name=document.getElementById("name").textContent="Hello  " + loginEmail;
+        if (email !=null && password !=null){
+           display.style.display="block";
+
+        } else display.style.display="none";
+
+        function logOut(){
+            sessionStorage.removeItem('loginEmail');
+            sessionStorage.removeItem('loginPassword');
+            location.reload();
+        }
     </script>
 </body>
 </html>
